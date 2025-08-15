@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2: Core Machine Learning | AI Engineer Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --accent: #4776e6;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e0e0e0;
+            --lighter: #f5f5f5;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+        
+        .level-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .level-tag {
+            display: inline-block;
+            background: rgba(110, 72, 170, 0.2);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .level-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .level-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .timeline-icon {
+            color: var(--primary);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .module {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .module:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(110,72,170,0.2);
+        }
+        
+        .module-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .module-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .module-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .module-duration {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        
+        .module-objectives {
+            margin-bottom: 1.5rem;
+        }
+        
+        .objective-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .objective-list {
+            padding-left: 1.2rem;
+        }
+        
+        .objective-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .resources {
+            margin-top: 1.5rem;
+        }
+        
+        .resources-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .resource-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .resource-link:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .pro-tip {
+            background: rgba(71, 118, 230, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+        
+        .pro-tip-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .next-level {
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .next-level a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .next-level a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(110,72,170,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .level-title {
+                font-size: 2.2rem;
+            }
+            
+            .level-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Roadmap
+        </a>
+        
+        <div class="level-header">
+            <div class="level-tag">LEVEL 2</div>
+            <h1 class="level-title">Core Machine Learning</h1>
+            <p class="level-subtitle">Master the fundamental algorithms and techniques that power modern AI systems</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </span>
+                    <span>3 months</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </span>
+                    <span>Goal: Build ML models from scratch</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-grid">
+            <div class="module">
+                <div class="module-header">
+                    <span class="module-number">01</span>
+                </div>
+                <h2 class="module-title">ML Fundamentals</h2>
+                <div class="module-duration">4 weeks</div>
+                
+                <div class="module-objectives">
+                    <h3 class="objective-title">Master These Concepts:</h3>
+                    <ul class="objective-list">
+                        <li>Supervised vs. unsupervised learning</li>
+                        <li>Bias-variance tradeoff</li>
+                        <li>Training/test splits and cross-validation</li>
+                        <li>Performance metrics (accuracy, precision, recall)</li>
+                        <li>Feature engineering techniques</li>
+                    </ul>
+                </div>
+                
+                <div class="resources">
+                    <h3 class="resources-title">Recommended Resources:</h3>
+                    <a href="#" class="resource-link">• Google's Machine Learning Crash Course</a><br>
+                    <a href="#" class="resource-link">• Hands-On Machine Learning with Scikit-Learn</a><br>
+                    <a href="#" class="resource-link">• Andrew Ng's ML Coursera (Weeks 1-3)</a>
+                </div>
+            </div>
+            
+            <div class="module">
+                <div class="module-header">
+                    <span class="module-number">02</span>
+                </div>
+                <h2 class="module-title">Core Algorithms</h2>
+                <div class="module-duration">6 weeks</div>
+                
+                <div class="module-objectives">
+                    <h3 class="objective-title">Implement These Algorithms:</h3>
+                    <ul class="objective-list">
+                        <li>Linear & logistic regression</li>
+                        <li>Decision trees and random forests</li>
+                        <li>Support Vector Machines (SVMs)</li>
+                        <li>k-Nearest Neighbors (kNN)</li>
+                        <li>Naive Bayes classifiers</li>
+                        <li>Dimensionality reduction (PCA)</li>
+                    </ul>
+                </div>
+                
+                <div class="resources">
+                    <h3 class="resources-title">Recommended Resources:</h3>
+                    <a href="#" class="resource-link">• Scikit-learn documentation</a><br>
+                    <a href="#" class="resource-link">• ML from Scratch (GitHub repo)</a><br>
+                    <a href="#" class="resource-link">• StatQuest algorithm explanations</a>
+                </div>
+            </div>
+            
+            <div class="module">
+                <div class="module-header">
+                    <span class="module-number">03</span>
+                </div>
+                <h2 class="module-title">Model Optimization</h2>
+                <div class="module-duration">5 weeks</div>
+                
+                <div class="module-objectives">
+                    <h3 class="objective-title">Master These Skills:</h3>
+                    <ul class="objective-list">
+                        <li>Hyperparameter tuning (GridSearch, RandomSearch)</li>
+                        <li>Regularization techniques</li>
+                        <li>Ensemble methods (bagging, boosting)</li>
+                        <li>Model interpretability (SHAP, LIME)</li>
+                        <li>Basic model deployment</li>
+                    </ul>
+                </div>
+                
+                <div class="resources">
+                    <h3 class="resources-title">Recommended Resources:</h3>
+                    <a href="#" class="resource-link">• Kaggle ML courses</a><br>
+                    <a href="#" class="resource-link">• Interpretable ML book</a><br>
+                    <a href="#" class="resource-link">• Fast.ai Practical ML</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pro-tip">
+            <h3 class="pro-tip-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                Pro Tip
+            </h3>
+            <p>Implement each algorithm from scratch (using NumPy) before relying on scikit-learn. This deep understanding will help you tremendously when you need to debug models or customize algorithms for specific problems. Start with linear regression, then move to more complex algorithms.</p>
+        </div>
+        
+        <div class="next-level">
+            <a href="level-3.html">
+                Continue to Level 3: Deep Learning
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1: Strong Foundations | AI Engineer Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --accent: #4776e6;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e0e0e0;
+            --lighter: #f5f5f5;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+        
+        .level-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .level-tag {
+            display: inline-block;
+            background: rgba(110, 72, 170, 0.2);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .level-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .level-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .timeline-icon {
+            color: var(--primary);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .module {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .module:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(110,72,170,0.2);
+        }
+        
+        .module-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .module-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .module-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .module-duration {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        
+        .module-objectives {
+            margin-bottom: 1.5rem;
+        }
+        
+        .objective-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .objective-list {
+            padding-left: 1.2rem;
+        }
+        
+        .objective-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .resources {
+            margin-top: 1.5rem;
+        }
+        
+        .resources-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .resource-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .resource-link:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .pro-tip {
+            background: rgba(71, 118, 230, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+        
+        .pro-tip-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .next-level {
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .next-level a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .next-level a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(110,72,170,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .level-title {
+                font-size: 2.2rem;
+            }
+            
+            .level-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Roadmap
+        </a>
+        
+        <div class="level-header">
+            <div class="level-tag">LEVEL 1</div>
+            <h1 class="level-title">Strong Foundations</h1>
+            <p class="level-subtitle">Build your Python fluency, mathematical understanding, and data handling skills - the essential groundwork for AI engineering</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </span>
+                    <span>3-4 months</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
+                            <path d="M8.5 8.5v.01"></path>
+                            <path d="M16 15.5v.01"></path>
+                            <path d="M12 12v.01"></path>
+                            <path d="M11 17v.01"></path>
+                            <path d="M7 14v.01"></path>
+                        </svg>
+                    </span>
+                    <span>Goal: Python fluency & math fundamentals</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-grid">
+            <div class="module">
+                <div class="module-header">
+                    <span class="module-number">01</span>
+                </div>
+                <h2 class="module-title">Python Programming</h2>
+                <div class="module-duration">4-6 weeks</div>
+                
+                <div class="module-objectives">
+                    <h3 class="objective-title">Master These Skills:</h3>
+                    <ul class="objective-list">
+                        <li>Python syntax and core concepts</li>
+                        <li>Data structures (lists, dicts, sets, tuples)</li>
+                        <li>Functions and OOP principles</li>
+                        <li>File I/O and error handling</li>
+                        <li>Working with libraries (NumPy, Pandas basics)</li>
+                    </ul>
+                </div>
+                
+                <div class="resources">
+                    <h3 class="resources-title">Recommended Resources:</h3>
+                    <a href="#" class="resource-link">• Python Crash Course (Book)</a><br>
+                    <a href="#" class="resource-link">• Real Python Tutorials</a><br>
+                    <a href="#" class="resource-link">• Python Data Science Handbook</a>
+                </div>
+            </div>
+            
+            <div class="module">
+                <div class="module-header">
+                    <span class="module-number">02</span>
+                </div>
+                <h2 class="module-title">Mathematical Foundations</h2>
+                <div class="module-duration">5-7 weeks</div>
+                
+                <div class="module-objectives">
+                    <h3 class="objective-title">Master These Skills:</h3>
+                    <ul class="objective-list">
+                        <li>Linear algebra (vectors, matrices, operations)</li>
+                        <li>Calculus (derivatives, gradients, optimization)</li>
+                        <li>Probability and statistics</li>
+                        <li>Basic algorithms and complexity</li>
+                    </ul>
+                </div>
+                
+                <div class="resources">
+                    <h3 class="resources-title">Recommended Resources:</h3>
+                    <a href="#" class="resource-link">• 3Blue1Brown Linear Algebra</a><br>
+                    <a href="#" class="resource-link">• Mathematics for Machine Learning</a><br>
+                    <a href="#" class="resource-link">• StatQuest YouTube Channel</a>
+                </div>
+            </div>
+            
+            <div class="module">
+                <div class="module-header">
+                    <span class="module-number">03</span>
+                </div>
+                <h2 class="module-title">Data Handling</h2>
+                <div class="module-duration">4-6 weeks</div>
+                
+                <div class="module-objectives">
+                    <h3 class="objective-title">Master These Skills:</h3>
+                    <ul class="objective-list">
+                        <li>Pandas for data manipulation</li>
+                        <li>NumPy for numerical operations</li>
+                        <li>Data visualization (Matplotlib, Seaborn)</li>
+                        <li>Data cleaning and preprocessing</li>
+                        <li>Basic SQL for data querying</li>
+                    </ul>
+                </div>
+                
+                <div class="resources">
+                    <h3 class="resources-title">Recommended Resources:</h3>
+                    <a href="#" class="resource-link">• Pandas Documentation</a><br>
+                    <a href="#" class="resource-link">• Kaggle Python Courses</a><br>
+                    <a href="#" class="resource-link">• Data Wrangling with Python</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pro-tip">
+            <h3 class="pro-tip-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                Pro Tip
+            </h3>
+            <p>Build small projects after each module to reinforce learning. For example: a data analysis project using Pandas, a linear algebra calculator using NumPy, or a visualization dashboard. This practical application will help solidify concepts faster than just studying theory.</p>
+        </div>
+        
+        <div class="next-level">
+            <a href="level-2.html">
+                Continue to Level 2: Core Machine Learning
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

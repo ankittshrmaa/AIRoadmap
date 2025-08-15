@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3: Deep Learning Foundations | AI Engineer Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --accent: #4776e6;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e0e0e0;
+            --lighter: #f5f5f5;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+        
+        .level-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .level-tag {
+            display: inline-block;
+            background: rgba(110, 72, 170, 0.2);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .level-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .level-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .timeline-icon {
+            color: var(--primary);
+        }
+        
+        .outcomes {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .outcomes-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .outcomes-list {
+            padding-left: 1.2rem;
+        }
+        
+        .outcomes-list li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .outcomes-list li::before {
+            content: '→';
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+        }
+        
+        .week-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .week-card {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .week-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(110,72,170,0.2);
+        }
+        
+        .week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .week-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .week-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .week-goal {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .topics-title, .hands-on-title, .projects-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.5rem;
+            color: var(--primary);
+        }
+        
+        .topics-list, .hands-on-list, .projects-list {
+            padding-left: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .topics-list li, .hands-on-list li, .projects-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .topics-list li::before {
+            content: '•';
+            color: var(--accent);
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .rhythm {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .rhythm-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .rhythm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .rhythm-item {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        
+        .rhythm-day {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .exit-criteria {
+            margin-top: 4rem;
+        }
+        
+        .exit-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .exit-list {
+            padding-left: 1.2rem;
+        }
+        
+        .exit-list li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .exit-list li::before {
+            content: '✓';
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+        }
+        
+        .next-level {
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .next-level a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .next-level a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(110,72,170,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .level-title {
+                font-size: 2.2rem;
+            }
+            
+            .level-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .week-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Roadmap
+        </a>
+        
+        <div class="level-header">
+            <div class="level-tag">LEVEL 3</div>
+            <h1 class="level-title">Deep Learning Foundations</h1>
+            <p class="level-subtitle">Master neural networks from first principles to practical implementation in PyTorch</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </span>
+                    <span>12 weeks intensive</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </span>
+                    <span>Goal: Implement networks from scratch</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="outcomes">
+            <h2 class="outcomes-title">What You'll Be Able to Do at the End</h2>
+            <ul class="outcomes-list">
+                <li>Understand exactly how a neural network learns (forward pass → loss → backpropagation → parameter updates)</li>
+                <li>Implement fully-connected networks, CNNs, RNNs/LSTMs without "magic" libraries doing it for you</li>
+                <li>Train models in PyTorch for image, text, and sequence tasks</li>
+                <li>Use GPU acceleration and avoid common training mistakes</li>
+                <li>Build at least 5 showcase projects that demonstrate deep learning in action</li>
+            </ul>
+        </div>
+        
+        <h2 class="week-title" style="color: var(--accent); margin-bottom: 1.5rem;">Weekly Breakdown</h2>
+        
+        <div class="week-container">
+            <!-- Weeks 1-2 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3 class="week-title">Neural Network Fundamentals</h3>
+                    <span class="week-number">Weeks 1-2</span>
+                </div>
+                <p class="week-goal">Goal: Understand what's happening under the hood before touching PyTorch</p>
+                
+                <h4 class="topics-title">Topics</h4>
+                <ul class="topics-list">
+                    <li>Perceptrons & multilayer perceptrons (MLPs)</li>
+                    <li>Activation functions: Sigmoid, Tanh, ReLU, LeakyReLU, Softmax</li>
+                    <li>Loss functions: MSE, Cross-Entropy</li>
+                    <li>Gradient descent variants: SGD, Momentum, Adam</li>
+                    <li>Backpropagation math: chain rule through a computational graph</li>
+                    <li>Weight initialization (Xavier, He)</li>
+                    <li>Overfitting & regularization: L1/L2, dropout</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Hands-on</h4>
+                <ul class="hands-on-list">
+                    <li><strong>Week 1:</strong> Build a 2-layer neural net from scratch in NumPy</li>
+                    <li><strong>Week 2:</strong> Add multiple layers, different activations, and dropout</li>
+                </ul>
+                
+                <h4 class="projects-title">Micro-projects</h4>
+                <ul class="projects-list">
+                    <li>XOR classifier from scratch</li>
+                    <li>Handwritten digit recognition (MNIST) with NumPy (no frameworks)</li>
+                </ul>
+            </div>
+            
+            <!-- Weeks 3-4 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3 class="week-title">PyTorch Basics</h3>
+                    <span class="week-number">Weeks 3-4</span>
+                </div>
+                <p class="week-goal">Goal: Move from scratch implementations to a professional DL framework</p>
+                
+                <h4 class="topics-title">Topics</h4>
+                <ul class="topics-list">
+                    <li>Tensors, gradients, and autograd in PyTorch</li>
+                    <li>Building nn.Module classes</li>
+                    <li>Training loop: forward → loss → backward → optimizer step</li>
+                    <li>Dataset & DataLoader</li>
+                    <li>GPU acceleration (.to(device) usage)</li>
+                    <li>Saving & loading models</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Hands-on</h4>
+                <ul class="hands-on-list">
+                    <li>Rewrite your NumPy MNIST classifier in PyTorch</li>
+                    <li>Train a model to classify CIFAR-10 images</li>
+                </ul>
+                
+                <h4 class="projects-title">Micro-projects</h4>
+                <ul class="projects-list">
+                    <li>MNIST digit classifier in PyTorch</li>
+                    <li>CIFAR-10 image classifier with simple CNN</li>
+                </ul>
+            </div>
+            
+            <!-- Weeks 5-6 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3 class="week-title">Convolutional Neural Networks</h3>
+                    <span class="week-number">Weeks 5-6</span>
+                </div>
+                <p class="week-goal">Goal: Learn image processing in deep learning</p>
+                
+                <h4 class="topics-title">Topics</h4>
+                <ul class="topics-list">
+                    <li>Convolutions, filters/kernels, feature maps</li>
+                    <li>Pooling (max, average)</li>
+                    <li>Padding, stride</li>
+                    <li>CNN architectures: LeNet, AlexNet, VGG, ResNet</li>
+                    <li>Transfer learning & fine-tuning</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Hands-on</h4>
+                <ul class="hands-on-list">
+                    <li>Implement your first CNN from scratch in PyTorch</li>
+                    <li>Apply transfer learning using a pre-trained ResNet</li>
+                </ul>
+                
+                <h4 class="projects-title">Micro-projects</h4>
+                <ul class="projects-list">
+                    <li>Fashion-MNIST image classifier (CNN)</li>
+                    <li>Cat-vs-Dog classifier with ResNet fine-tuning</li>
+                </ul>
+            </div>
+            
+            <!-- Weeks 7-8 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3 class="week-title">RNNs & LSTMs</h3>
+                    <span class="week-number">Weeks 7-8</span>
+                </div>
+                <p class="week-goal">Goal: Handle sequential data like text and time series</p>
+                
+                <h4 class="topics-title">Topics</h4>
+                <ul class="topics-list">
+                    <li>RNN architecture & vanishing gradients</li>
+                    <li>LSTMs & GRUs for long-term dependencies</li>
+                    <li>Word embeddings (Word2Vec, GloVe)</li>
+                    <li>Sequence-to-sequence (seq2seq) basics</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Hands-on</h4>
+                <ul class="hands-on-list">
+                    <li>Train an LSTM to predict next character in text</li>
+                    <li>Build a sentiment analysis model for IMDB reviews</li>
+                </ul>
+                
+                <h4 class="projects-title">Micro-projects</h4>
+                <ul class="projects-list">
+                    <li>Character-level text generator</li>
+                    <li>Movie review sentiment classifier</li>
+                </ul>
+            </div>
+            
+            <!-- Weeks 9-10 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3 class="week-title">Training Best Practices</h3>
+                    <span class="week-number">Weeks 9-10</span>
+                </div>
+                <p class="week-goal">Goal: Learn how to train models faster, better, and without overfitting</p>
+                
+                <h4 class="topics-title">Topics</h4>
+                <ul class="topics-list">
+                    <li>Learning rate schedules</li>
+                    <li>Data augmentation (image flips, rotations, noise)</li>
+                    <li>Early stopping & checkpointing</li>
+                    <li>Mixed precision training for speed</li>
+                    <li>TensorBoard for visualization</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Hands-on</h4>
+                <ul class="hands-on-list">
+                    <li>Optimize CIFAR-10 classifier for >85% accuracy</li>
+                    <li>Add real-time TensorBoard logging</li>
+                </ul>
+                
+                <h4 class="projects-title">Micro-projects</h4>
+                <ul class="projects-list">
+                    <li>Image augmentation comparison experiment</li>
+                    <li>Training log dashboard in TensorBoard</li>
+                </ul>
+            </div>
+            
+            <!-- Weeks 11-12 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3 class="week-title">Capstone Project</h3>
+                    <span class="week-number">Weeks 11-12</span>
+                </div>
+                <p class="week-goal">Goal: End-to-end deep learning project from dataset to deployment</p>
+                
+                <h4 class="topics-title">Project Ideas</h4>
+                <ul class="topics-list">
+                    <li>Face Mask Detection System (CNN + transfer learning)</li>
+                    <li>Chatbot with LSTM (train on movie dialogue dataset)</li>
+                    <li>Music Genre Classifier (audio → spectrogram → CNN)</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Deliverables</h4>
+                <ul class="hands-on-list">
+                    <li>Clean PyTorch code</li>
+                    <li>README with model architecture and results</li>
+                    <li>Training curves & example outputs</li>
+                    <li>Model deployed as API (FastAPI + Docker)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="rhythm">
+            <h2 class="rhythm-title">Weekly Learning Rhythm</h2>
+            <div class="rhythm-grid">
+                <div class="rhythm-item">
+                    <div class="rhythm-day">Mon-Thu</div>
+                    <p>Topic study + coding (90-120 min after work)</p>
+                </div>
+                <div class="rhythm-item">
+                    <div class="rhythm-day">Friday</div>
+                    <p>Experiment day (try new optimizers/architectures)</p>
+                </div>
+                <div class="rhythm-item">
+                    <div class="rhythm-day">Saturday</div>
+                    <p>Mini-project or extend existing work</p>
+                </div>
+                <div class="rhythm-item">
+                    <div class="rhythm-day">Sunday</div>
+                    <p>Review + commit code + write documentation</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="exit-criteria">
+            <h2 class="exit-title">Stage 3 Exit Criteria</h2>
+            <p>You're ready for Stage 4 (specialization) when you can:</p>
+            <ul class="exit-list">
+                <li>Build MLP, CNN, and LSTM from scratch in NumPy</li>
+                <li>Train & evaluate deep learning models in PyTorch</li>
+                <li>Use GPUs, checkpoints, and TensorBoard</li>
+                <li>Explain activation functions and backpropagation without notes</li>
+                <li>Have 5+ deep learning projects on GitHub with clean documentation</li>
+            </ul>
+        </div>
+        
+        <div class="next-level">
+            <a href="level-4.html">
+                Continue to Level 4: NLP/CV Specialization
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

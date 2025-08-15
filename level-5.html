@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 5: Real-World AI Engineering & MLOps | AI Engineer Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --accent: #4776e6;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e0e0e0;
+            --lighter: #f5f5f5;
+            --api: #4CAF50;
+            --docker: #2496ED;
+            --cloud: #FF9800;
+            --mlops: #9C27B0;
+            --monitoring: #F44336;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+        
+        .level-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .level-tag {
+            display: inline-block;
+            background: rgba(110, 72, 170, 0.2);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .level-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .level-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .timeline-icon {
+            color: var(--primary);
+        }
+        
+        .prerequisites {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .prerequisites-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .prerequisites-list {
+            padding-left: 1.2rem;
+        }
+        
+        .prerequisites-list li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .prerequisites-list li::before {
+            content: '✓';
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+        }
+        
+        .core-goals {
+            margin-bottom: 3rem;
+        }
+        
+        .core-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .goal-card {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .goal-icon {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .goal-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .months-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .month-card {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .month-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+        
+        .month-card.api::before { background-color: var(--api); }
+        .month-card.docker::before { background-color: var(--docker); }
+        .month-card.cloud::before { background-color: var(--cloud); }
+        .month-card.mlops::before { background-color: var(--mlops); }
+        .month-card.monitoring::before { background-color: var(--monitoring); }
+        
+        .month-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(110,72,170,0.2);
+        }
+        
+        .month-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .month-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .month-title.api { color: var(--api); }
+        .month-title.docker { color: var(--docker); }
+        .month-title.cloud { color: var(--cloud); }
+        .month-title.mlops { color: var(--mlops); }
+        .month-title.monitoring { color: var(--monitoring); }
+        
+        .month-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .skills-title, .hands-on-title, .projects-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.5rem;
+        }
+        
+        .skills-title.api, .projects-title.api { color: var(--api); }
+        .skills-title.docker, .projects-title.docker { color: var(--docker); }
+        .skills-title.cloud, .projects-title.cloud { color: var(--cloud); }
+        .skills-title.mlops, .projects-title.mlops { color: var(--mlops); }
+        .skills-title.monitoring, .projects-title.monitoring { color: var(--monitoring); }
+        
+        .skills-list, .hands-on-list, .projects-list {
+            padding-left: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .skills-list li, .hands-on-list li, .projects-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .skills-list li::before, .projects-list li::before {
+            content: '•';
+            position: absolute;
+            left: -1rem;
+        }
+        
+        .skills-list.api li::before { color: var(--api); }
+        .skills-list.docker li::before { color: var(--docker); }
+        .skills-list.cloud li::before { color: var(--cloud); }
+        .skills-list.mlops li::before { color: var(--mlops); }
+        .skills-list.monitoring li::before { color: var(--monitoring); }
+        
+        .capstone {
+            margin-top: 3rem;
+        }
+        
+        .capstone-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .capstone-card {
+            background: rgba(71, 118, 230, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        
+        .capstone-card-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+        
+        .deliverables-list {
+            padding-left: 1.2rem;
+        }
+        
+        .deliverables-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .deliverables-list li::before {
+            content: '▹';
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+        }
+        
+        .exit-criteria {
+            margin-top: 4rem;
+        }
+        
+        .exit-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .exit-list {
+            padding-left: 1.2rem;
+        }
+        
+        .exit-list li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .exit-list li::before {
+            content: '✓';
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+        }
+        
+        .next-level {
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .next-level a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .next-level a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(110,72,170,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .level-title {
+                font-size: 2.2rem;
+            }
+            
+            .level-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .months-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Roadmap
+        </a>
+        
+        <div class="level-header">
+            <div class="level-tag">LEVEL 5</div>
+            <h1 class="level-title">Real-World AI Engineering & MLOps</h1>
+            <p class="level-subtitle">Take your AI models from notebooks to production with professional deployment and monitoring</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </span>
+                    <span>6-12 months intensive</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </span>
+                    <span>Goal: Make AI models production-ready</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="prerequisites">
+            <h2 class="prerequisites-title">By This Point You Should:</h2>
+            <ul class="prerequisites-list">
+                <li>Be comfortable building deep learning models</li>
+                <li>Have specialized in at least one AI area</li>
+                <li>Know how to fine-tune and optimize models</li>
+                <li>Have completed several AI projects</li>
+            </ul>
+        </div>
+        
+        <div class="core-goals">
+            <h2 class="core-title">Core Goals of This Stage</h2>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <div class="goal-icon">🚀</div>
+                    <h3 class="goal-title">Deploy Models</h3>
+                    <p>Make models accessible via web apps, APIs, and cloud services</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">🤖</div>
+                    <h3 class="goal-title">Automate Training</h3>
+                    <p>Implement CI/CD pipelines for AI model updates</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">👀</div>
+                    <h3 class="goal-title">Monitor Systems</h3>
+                    <p>Detect drift and performance issues in production</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">📊</div>
+                    <h3 class="goal-title">Handle Data at Scale</h3>
+                    <p>Work efficiently with large, real-world datasets</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">🔌</div>
+                    <h3 class="goal-title">Business Integration</h3>
+                    <p>Connect AI systems with existing business infrastructure</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="core-title" style="margin-bottom: 1.5rem;">Monthly Breakdown</h2>
+        
+        <div class="months-container">
+            <!-- Month 1-2 -->
+            <div class="month-card api">
+                <div class="month-header">
+                    <h3 class="month-title api">Model Serving & APIs</h3>
+                    <span class="month-number">Month 1-2</span>
+                </div>
+                
+                <h4 class="skills-title api">Skills</h4>
+                <ul class="skills-list api">
+                    <li>FastAPI / Flask for serving models</li>
+                    <li>REST vs GraphQL API design</li>
+                    <li>Model serialization: Pickle, ONNX, TorchScript</li>
+                    <li>Handling large requests (streaming, async)</li>
+                    <li>Authentication and rate limiting</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Hands-on</h4>
+                <ul class="hands-on-list">
+                    <li>Deploy your Stage 4 model as a FastAPI endpoint</li>
+                    <li>Create a simple web app that consumes your API</li>
+                </ul>
+                
+                <h4 class="projects-title api">Micro-projects</h4>
+                <ul class="projects-list api">
+                    <li>Image classifier API (upload → returns label)</li>
+                    <li>Chatbot API (text in → generated text out)</li>
+                </ul>
+            </div>
+            
+            <!-- Month 3 -->
+            <div class="month-card docker">
+                <div class="month-header">
+                    <h3 class="month-title docker">Containerization</h3>
+                    <span class="month-number">Month 3</span>
+                </div>
+                
+                <h4 class="skills-title docker">Skills</h4>
+                <ul class="skills-list docker">
+                    <li>Docker basics: images, containers, volumes</li>
+                    <li>Dockerizing ML applications</li>
+                    <li>Multi-service apps with Docker Compose</li>
+                    <li>Container registries (Docker Hub, AWS ECR)</li>
+                    <li>Resource constraints and optimization</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Hands-on</h4>
+                <ul class="hands-on-list">
+                    <li>Containerize your API with all dependencies</li>
+                    <li>Deploy to cloud (AWS EC2, Azure, or Google Cloud Run)</li>
+                </ul>
+                
+                <h4 class="projects-title docker">Micro-project</h4>
+                <ul class="projects-list docker">
+                    <li>Dockerized AI model running 24/7 on cloud</li>
+                </ul>
+            </div>
+            
+            <!-- Month 4 -->
+            <div class="month-card cloud">
+                <div class="month-header">
+                    <h3 class="month-title cloud">Cloud AI Platforms</h3>
+                    <span class="month-number">Month 4</span>
+                </div>
+                
+                <h4 class="skills-title cloud">Skills</h4>
+                <ul class="skills-list cloud">
+                    <li>AWS SageMaker, Google Vertex AI, Azure AI</li>
+                    <li>Managed model endpoints</li>
+                    <li>AutoML features and limitations</li>
+                    <li>Cost optimization strategies</li>
+                    <li>Security and access control</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Hands-on</h4>
+                <ul class="hands-on-list">
+                    <li>Deploy your model on at least one cloud platform</li>
+                    <li>Experiment with auto-scaling and load testing</li>
+                </ul>
+            </div>
+            
+            <!-- Month 5 -->
+            <div class="month-card mlops">
+                <div class="month-header">
+                    <h3 class="month-title mlops">MLOps & Automation</h3>
+                    <span class="month-number">Month 5</span>
+                </div>
+                
+                <h4 class="skills-title mlops">Skills</h4>
+                <ul class="skills-list mlops">
+                    <li>CI/CD for ML: GitHub Actions, GitLab CI</li>
+                    <li>End-to-end ML pipelines</li>
+                    <li>MLflow for experiment tracking</li>
+                    <li>Airflow for scheduling jobs</li>
+                    <li>Model versioning and rollback</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Hands-on</h4>
+                <ul class="hands-on-list">
+                    <li>Build pipeline that pulls data → retrains → deploys</li>
+                    <li>Set up automated testing for model updates</li>
+                </ul>
+                
+                <h4 class="projects-title mlops">Micro-project</h4>
+                <ul class="projects-list mlops">
+                    <li>End-to-end retraining pipeline with monitoring</li>
+                </ul>
+            </div>
+            
+            <!-- Month 6+ -->
+            <div class="month-card monitoring">
+                <div class="month-header">
+                    <h3 class="month-title monitoring">Monitoring & Scaling</h3>
+                    <span class="month-number">Month 6+</span>
+                </div>
+                
+                <h4 class="skills-title monitoring">Skills</h4>
+                <ul class="skills-list monitoring">
+                    <li>Monitoring with Prometheus + Grafana</li>
+                    <li>Model drift detection techniques</li>
+                    <li>Logging inputs/outputs for improvement</li>
+                    <li>Kubernetes for scaling AI services</li>
+                    <li>Load testing with Locust/k6</li>
+                </ul>
+                
+                <h4 class="hands-on-title">Hands-on</h4>
+                <ul class="hands-on-list">
+                    <li>Deploy model to Kubernetes cluster</li>
+                    <li>Set up comprehensive monitoring dashboard</li>
+                    <li>Implement canary deployments for models</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="capstone">
+            <h2 class="capstone-title">Stage 5 Capstone Project</h2>
+            <p>Create a production-grade AI system that demonstrates all your MLOps skills:</p>
+            
+            <div class="capstone-card">
+                <h3 class="capstone-card-title">"AI in Production" Requirements</h3>
+                <ul class="skills-list">
+                    <li>Pick a model from your Stage 4 specialization</li>
+                    <li>Deploy to cloud with public API endpoint</li>
+                    <li>Containerize with Docker</li>
+                    <li>Implement monitoring dashboard</li>
+                    <li>Set up automated retraining pipeline</li>
+                    <li>Handle at least 100 concurrent requests</li>
+                </ul>
+                
+                <h4 class="projects-title">Deliverables</h4>
+                <ul class="deliverables-list">
+                    <li>Production-ready code with CI/CD pipeline</li>
+                    <li>Dockerfile and deployment scripts</li>
+                    <li>Monitoring dashboard screenshots</li>
+                    <li>Load testing results</li>
+                    <li>Detailed README with architecture diagrams</li>
+                    <li>Publicly accessible demo URL</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="exit-criteria">
+            <h2 class="exit-title">Stage 5 Exit Criteria</h2>
+            <p>You're ready for Stage 6 when you can:</p>
+            <ul class="exit-list">
+                <li>Serve AI models via production-ready APIs</li>
+                <li>Deploy models using Docker and Kubernetes</li>
+                <li>Automate training and deployment pipelines</li>
+                <li>Monitor performance and detect model drift</li>
+                <li>Maintain at least 2 production AI projects online</li>
+                <li>Explain your infrastructure to engineering teams</li>
+            </ul>
+        </div>
+        
+        <div class="next-level">
+            <a href="level-6.html">
+                Continue to Level 6: Advanced AI Research
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

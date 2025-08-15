@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4: Advanced AI Specialization | AI Engineer Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --accent: #4776e6;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #e0e0e0;
+            --lighter: #f5f5f5;
+            --nlp: #4CAF50;
+            --cv: #FF5722;
+            --genai: #9C27B0;
+            --audio: #FF9800;
+            --domain: #2196F3;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+        
+        .level-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .level-tag {
+            display: inline-block;
+            background: rgba(110, 72, 170, 0.2);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .level-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .level-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .timeline-icon {
+            color: var(--primary);
+        }
+        
+        .prerequisites {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .prerequisites-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .prerequisites-list {
+            padding-left: 1.2rem;
+        }
+        
+        .prerequisites-list li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .prerequisites-list li::before {
+            content: '✓';
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+        }
+        
+        .tracks-intro {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .tracks-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .tracks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .track-card {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .track-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+        
+        .track-card.nlp::before { background-color: var(--nlp); }
+        .track-card.cv::before { background-color: var(--cv); }
+        .track-card.genai::before { background-color: var(--genai); }
+        .track-card.audio::before { background-color: var(--audio); }
+        .track-card.domain::before { background-color: var(--domain); }
+        
+        .track-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(110,72,170,0.2);
+        }
+        
+        .track-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .track-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .track-icon.nlp { background-color: rgba(76, 175, 80, 0.2); color: var(--nlp); }
+        .track-icon.cv { background-color: rgba(255, 87, 34, 0.2); color: var(--cv); }
+        .track-icon.genai { background-color: rgba(156, 39, 176, 0.2); color: var(--genai); }
+        .track-icon.audio { background-color: rgba(255, 152, 0, 0.2); color: var(--audio); }
+        .track-icon.domain { background-color: rgba(33, 150, 243, 0.2); color: var(--domain); }
+        
+        .track-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .track-title.nlp { color: var(--nlp); }
+        .track-title.cv { color: var(--cv); }
+        .track-title.genai { color: var(--genai); }
+        .track-title.audio { color: var(--audio); }
+        .track-title.domain { color: var(--domain); }
+        
+        .track-duration {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        
+        .track-description {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .skills-title, .projects-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.5rem;
+        }
+        
+        .skills-title.nlp, .projects-title.nlp { color: var(--nlp); }
+        .skills-title.cv, .projects-title.cv { color: var(--cv); }
+        .skills-title.genai, .projects-title.genai { color: var(--genai); }
+        .skills-title.audio, .projects-title.audio { color: var(--audio); }
+        .skills-title.domain, .projects-title.domain { color: var(--domain); }
+        
+        .skills-list, .projects-list {
+            padding-left: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .skills-list li, .projects-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .skills-list li::before, .projects-list li::before {
+            content: '•';
+            position: absolute;
+            left: -1rem;
+        }
+        
+        .skills-list.nlp li::before { color: var(--nlp); }
+        .skills-list.cv li::before { color: var(--cv); }
+        .skills-list.genai li::before { color: var(--genai); }
+        .skills-list.audio li::before { color: var(--audio); }
+        .skills-list.domain li::before { color: var(--domain); }
+        
+        .common-skills {
+            background: linear-gradient(135deg, rgba(30,30,30,0.8), rgba(20,20,20,0.9));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .common-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .capstone {
+            margin-top: 3rem;
+        }
+        
+        .capstone-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .capstone-example {
+            background: rgba(71, 118, 230, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        
+        .capstone-example-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+        
+        .deliverables-list {
+            padding-left: 1.2rem;
+        }
+        
+        .deliverables-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .deliverables-list li::before {
+            content: '▹';
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+        }
+        
+        .timeline-months {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .month {
+            background: rgba(110, 72, 170, 0.1);
+            border-radius: 4px;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .month.active {
+            background: rgba(110, 72, 170, 0.3);
+            font-weight: 600;
+        }
+        
+        .month-label {
+            grid-column: span 8;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .exit-criteria {
+            margin-top: 4rem;
+        }
+        
+        .exit-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .exit-list {
+            padding-left: 1.2rem;
+        }
+        
+        .exit-list li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .exit-list li::before {
+            content: '✓';
+            color: var(--accent);
+            position: absolute;
+            left: -1.2rem;
+        }
+        
+        .advice {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 3px solid var(--nlp);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+        
+        .advice-title {
+            font-weight: 600;
+            color: var(--nlp);
+            margin-bottom: 0.8rem;
+        }
+        
+        .next-level {
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .next-level a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .next-level a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(110,72,170,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .level-title {
+                font-size: 2.2rem;
+            }
+            
+            .level-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .tracks-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-months {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .month-label {
+                grid-column: span 4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Roadmap
+        </a>
+        
+        <div class="level-header">
+            <div class="level-tag">LEVEL 4</div>
+            <h1 class="level-title">Advanced AI Specialization</h1>
+            <p class="level-subtitle">Dive deep into cutting-edge AI fields and develop expertise in your chosen specialization</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </span>
+                    <span>6-8 months intensive</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </span>
+                    <span>Goal: Become a domain expert in chosen AI specialization</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="prerequisites">
+            <h2 class="prerequisites-title">By Now You Should:</h2>
+            <ul class="prerequisites-list">
+                <li>Know ML & DL fundamentals (from previous levels)</li>
+                <li>Be comfortable building models in PyTorch</li>
+                <li>Understand CNNs, RNNs, LSTMs, and basic NLP/CV concepts</li>
+                <li>Have experience with at least 5 deep learning projects</li>
+            </ul>
+        </div>
+        
+        <div class="tracks-intro">
+            <h2 class="tracks-title">Choose Your Specialization Track(s)</h2>
+            <p>Pick 1 primary + optionally 1 secondary track to focus on:</p>
+        </div>
+        
+        <div class="tracks-container">
+            <!-- NLP Track -->
+            <div class="track-card nlp">
+                <div class="track-header">
+                    <div class="track-icon nlp">1</div>
+                    <h3 class="track-title nlp">NLP & LLMs</h3>
+                </div>
+                <div class="track-duration">3-4 months focus</div>
+                <p class="track-description">Chatbots, AI assistants, text summarization, question answering systems using large language models.</p>
+                
+                <h4 class="skills-title nlp">Core Skills</h4>
+                <ul class="skills-list nlp">
+                    <li>Tokenization, embeddings (Word2Vec, GloVe, FastText)</li>
+                    <li>Transformers: self-attention, encoder/decoder</li>
+                    <li>HuggingFace Transformers library</li>
+                    <li>Fine-tuning pre-trained LLMs</li>
+                    <li>Prompt engineering & retrieval-augmented generation (RAG)</li>
+                </ul>
+                
+                <h4 class="projects-title nlp">Projects</h4>
+                <ul class="projects-list nlp">
+                    <li>Domain-specific chatbot using GPT-style model</li>
+                    <li>Document summarizer for long PDFs</li>
+                    <li>Q&A bot with custom data (RAG + vector DB)</li>
+                </ul>
+            </div>
+            
+            <!-- Computer Vision Track -->
+            <div class="track-card cv">
+                <div class="track-header">
+                    <div class="track-icon cv">2</div>
+                    <h3 class="track-title cv">Computer Vision</h3>
+                </div>
+                <div class="track-duration">3-4 months focus</div>
+                <p class="track-description">Object detection, segmentation, image-to-image translation, and AI art generation.</p>
+                
+                <h4 class="skills-title cv">Core Skills</h4>
+                <ul class="skills-list cv">
+                    <li>YOLO, Faster R-CNN, Detectron2</li>
+                    <li>U-Net, Mask R-CNN for segmentation</li>
+                    <li>Image captioning models</li>
+                    <li>Generative models: GANs, diffusion models</li>
+                    <li>Advanced data augmentation</li>
+                </ul>
+                
+                <h4 class="projects-title cv">Projects</h4>
+                <ul class="projects-list cv">
+                    <li>Real-time object detection with YOLOv8</li>
+                    <li>AI art generator (Stable Diffusion fine-tuning)</li>
+                    <li>Medical image segmentation for diagnostics</li>
+                </ul>
+            </div>
+            
+            <!-- Generative AI Track -->
+            <div class="track-card genai">
+                <div class="track-header">
+                    <div class="track-icon genai">3</div>
+                    <h3 class="track-title genai">Generative AI</h3>
+                </div>
+                <div class="track-duration">4 months focus</div>
+                <p class="track-description">Text-to-image, text-to-video, and multi-input AI systems combining different modalities.</p>
+                
+                <h4 class="skills-title genai">Core Skills</h4>
+                <ul class="skills-list genai">
+                    <li>GANs, Variational Autoencoders (VAEs)</li>
+                    <li>Diffusion models (DALL·E, Stable Diffusion)</li>
+                    <li>CLIP (connecting text and images)</li>
+                    <li>Multi-modal transformers (Flamingo, BLIP-2)</li>
+                    <li>Text-to-video generation basics</li>
+                </ul>
+                
+                <h4 class="projects-title genai">Projects</h4>
+                <ul class="projects-list genai">
+                    <li>Text-to-image generator using diffusion models</li>
+                    <li>Multi-modal search engine</li>
+                    <li>Automated meme generator using CLIP + GPT</li>
+                </ul>
+            </div>
+            
+            <!-- Audio AI Track -->
+            <div class="track-card audio">
+                <div class="track-header">
+                    <div class="track-icon audio">4</div>
+                    <h3 class="track-title audio">Speech & Audio AI</h3>
+                </div>
+                <div class="track-duration">3-4 months focus</div>
+                <p class="track-description">Speech recognition, voice cloning, music generation, and audio processing systems.</p>
+                
+                <h4 class="skills-title audio">Core Skills</h4>
+                <ul class="skills-list audio">
+                    <li>MFCC, spectrograms and audio features</li>
+                    <li>Speech-to-text (Whisper, DeepSpeech)</li>
+                    <li>Text-to-speech (Tacotron 2, FastSpeech)</li>
+                    <li>Voice cloning technology</li>
+                    <li>Music generation (Jukebox, MusicLM)</li>
+                </ul>
+                
+                <h4 class="projects-title audio">Projects</h4>
+                <ul class="projects-list audio">
+                    <li>Voice-controlled AI assistant</li>
+                    <li>Podcast transcription + summarization system</li>
+                    <li>AI music generator in specific styles</li>
+                </ul>
+            </div>
+            
+            <!-- Domain AI Track -->
+            <div class="track-card domain">
+                <div class="track-header">
+                    <div class="track-icon domain">5</div>
+                    <h3 class="track-title domain">Domain-Specific AI</h3>
+                </div>
+                <div class="track-duration">3-4 months focus</div>
+                <p class="track-description">High-paying niche applications in healthcare, finance, legal, or other specialized domains.</p>
+                
+                <h4 class="skills-title domain">Core Skills</h4>
+                <ul class="skills-list domain">
+                    <li>Domain-specific data and regulations</li>
+                    <li>Tailoring models to compliance needs</li>
+                    <li>Domain-specific evaluation metrics</li>
+                    <li>Interpretability & explainable AI</li>
+                    <li>Integration with domain software</li>
+                </ul>
+                
+                <h4 class="projects-title domain">Projects</h4>
+                <ul class="projects-list domain">
+                    <li>Financial risk predictor</li>
+                    <li>Medical diagnosis assistant</li>
+                    <li>Legal document analyzer</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="common-skills">
+            <h2 class="common-title">Essential Skills for All Tracks</h2>
+            <ul class="skills-list">
+                <li><strong>Model deployment at scale:</strong> Docker + Kubernetes + cloud AI services</li>
+                <li><strong>MLOps for deep learning:</strong> MLflow, Weights & Biases integration</li>
+                <li><strong>Distributed training:</strong> Scaling across multiple GPUs</li>
+                <li><strong>API productization:</strong> Building production-ready AI services</li>
+                <li><strong>Experiment tracking:</strong> Ensuring reproducibility</li>
+            </ul>
+        </div>
+        
+        <div class="advice">
+            <h3 class="advice-title">Career Strategy Recommendation</h3>
+            <p>For maximum job security and opportunities in 2024-2025:</p>
+            <ul class="skills-list">
+                <li><strong>Primary Track:</strong> NLP/LLMs (most in-demand currently)</li>
+                <li><strong>Secondary Track:</strong> Domain-Specific AI (makes you the rare expert in regulated industries like healthcare/finance)</li>
+            </ul>
+        </div>
+        
+        <div class="capstone">
+            <h2 class="capstone-title">Stage 4 Capstone Project</h2>
+            <p>Build a portfolio-defining, end-to-end specialized AI system that could be shown to employers or investors.</p>
+            
+            <div class="capstone-example">
+                <h3 class="capstone-example-title">Example: AI-Powered Legal Assistant</h3>
+                <ul class="skills-list">
+                    <li>Uses RAG to answer legal questions from case files</li>
+                    <li>Fine-tuned LLM for legal terminology</li>
+                    <li>Deployed as web app with authentication</li>
+                    <li>Logs interactions for continuous improvement</li>
+                </ul>
+                
+                <h4 class="projects-title">Deliverables</h4>
+                <ul class="deliverables-list">
+                    <li>Production-ready code + Dockerfile</li>
+                    <li>Dataset preprocessing scripts</li>
+                    <li>README with architecture diagram</li>
+                    <li>Demo video walkthrough</li>
+                    <li>Performance benchmarks</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3 class="skills-title">Timeline</h3>
+        <div class="timeline-months">
+            <div class="month active">Month 1-2</div>
+            <div class="month active">Month 3-4</div>
+            <div class="month active">Month 5-6</div>
+            <div class="month">Month 7</div>
+            <div class="month">Month 8</div>
+            <div class="month"></div>
+            <div class="month"></div>
+            <div class="month"></div>
+            <div class="month-label">Deep dive into core theory + basic projects → Advanced projects + optimization → Capstone build + deployment → Optional secondary specialization</div>
+        </div>
+        
+        <div class="exit-criteria">
+            <h2 class="exit-title">Stage 4 Exit Criteria</h2>
+            <p>You're ready for Stage 5 (Real-World AI Engineering) when you can:</p>
+            <ul class="exit-list">
+                <li>Fine-tune and deploy models in your chosen specialization</li>
+                <li>Explain architecture trade-offs to non-technical stakeholders</li>
+                <li>Optimize inference for speed and cost efficiency</li>
+                <li>Demonstrate 3 advanced projects + 1 capstone in your portfolio</li>
+                <li>Integrate AI models with production systems</li>
+            </ul>
+        </div>
+        
+        <div class="next-level">
+            <a href="level-5.html">
+                Continue to Level 5: MLOps & Deployment
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
